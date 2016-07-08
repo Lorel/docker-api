@@ -2,10 +2,10 @@
 class Docker::Event
   include Docker::Error
 
-  attr_accessor :status, :id, :from, :time
+  attr_accessor :status, :id, :from, :time, :body
 
-  def initialize(status, id, from, time)
-    @status, @id, @from, @time = status, id, from, time
+  def initialize(status, id, from, time, body)
+    @status, @id, @from, @time, @body = status, id, from, time, body
   end
 
   def to_s
@@ -33,7 +33,8 @@ class Docker::Event
         json['status'],
         json['id'],
         json['from'],
-        json['time']
+        json['time'],
+        json
       )
     end
   end
